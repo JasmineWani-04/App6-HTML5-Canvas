@@ -61,7 +61,42 @@ console.log("This file last modified " + docMod); // generates message in javaSc
     z-index: 1;
 }
 </style>
+</head>
+<body>
+	<canvas id="myCanvas" width="300" height="500"></canvas>
+	<br>
+	<button onclick="drawRectangle()">Draw Rectangle</button>
+	<button onclick="drawText()">Write 'Jasmine'</button>
+	<button onclick="drawImage()">Load Cat Image</button>
+	<button onclick="clearCanvas()">Clear Canvas</button>
 
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext("2d");
+
+		function drawRectangle() {
+			context.beginPath();
+			context.rect(50, 50, 100, 75);
+			context.stroke();
+		}
+
+		function drawText() {
+			context.font = "30px Arial";
+			context.fillText("Jasmine", 50, 150);
+		}
+
+		function drawImage() {
+			var img = new Image();
+			img.onload = function() {
+				context.drawImage(img, 50, 200);
+			};
+			img.src = "https://helloartsy.com/wp-content/uploads/kids/cats/cat_drawing_for_kids/cat-drawing-for-kids_step-6.jpg";
+       
+		}
+
+		function clearCanvas() {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+		}
 <body>
 <div id="header" class="w3-container w3-flat-carrot">
 	<h1>App6---HTML5-Canvas</h1>
