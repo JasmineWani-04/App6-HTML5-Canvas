@@ -29,8 +29,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       <title>App6---HTML5-Canvas</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="apple-mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
+    
    </head> 
 
 
@@ -68,11 +67,40 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Content goes here.</p>
-		
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+	<canvas id="myCanvas"></canvas>
+	<br>
+	<button onclick="drawRectangle()">Draw Rectangle</button>
+	<button onclick="drawText()">Add Text</button>
+	<button onclick="drawImage()">Add Image</button>
+	<button onclick="clearCanvas()">Clear Canvas</button>
+
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var ctx = canvas.getContext("2d");
+
+		function drawRectangle() {
+			ctx.beginPath();
+			ctx.rect(50, 50, 100, 100);
+			ctx.stroke();
+		}
+
+		function drawText() {
+			ctx.font = "30px Arial";
+			ctx.fillText("Jasmine", 100, 100);
+		}
+
+		function drawImage() {
+			var img = new Image();
+			img.onload = function() {
+				ctx.drawImage(img, 50, 50, 100, 100);
+			};
+			img.src = "https://helloartsy.com/wp-content/uploads/kids/cats/how-to-draw-a-small-cat/how-to-draw-a-small-cat-step-6.jpg";
+		}
+
+		function clearCanvas() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		}
+	</script>
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
